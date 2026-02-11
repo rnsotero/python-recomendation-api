@@ -1,6 +1,10 @@
 from fastapi import FastAPI
-from .routes import router
+from app.database.database import Base, engine
+from app.database.models import Base
+from app.routes import router
 
-app = FastAPI(title="API de recomendação de produtos")
+app = FastAPI()
+
+Base.metadata.create_all(bind=engine)
 
 app.include_router(router)
