@@ -5,12 +5,12 @@ class UsuarioFake:
         self.interesses = interesses
         self.historico_compras = historico_compras
     
-    def test_recomendacao_por_interesse():
+def test_recomendacao_por_interesse():
         usuario = UsuarioFake(["games"], [])
         resultado = gerar_recomendacoes(usuario)
         assert "headset" in resultado
 
-    def test_recomendacao_por_historico():
+def test_recomendacao_por_historico():
         usuario = UsuarioFake([], ["notebook"])
         resultado = gerar_recomendacoes(usuario)
         assert "mouse" in resultado    
