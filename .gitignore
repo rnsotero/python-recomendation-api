@@ -1,3 +1,17 @@
+# Ambiente virtual
 venv/
-__pycache__/
 .env
+
+# Python
+__pycache__/
+*.pyc
+
+# Banco de dados
+*.db
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
