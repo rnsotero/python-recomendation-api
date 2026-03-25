@@ -1,73 +1,213 @@
-📌 Python Recommendation API
+# 🚀 Recommendation API
 
-API REST desenvolvida em Python com FastAPI, responsável por gerar recomendações de produtos com base em interesses e histórico de compras do usuário.
+[![Python](https://img.shields.io/badge/Python-3.10+-blue)]
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)]
+[![SQLite](https://img.shields.io/badge/Database-SQLite-lightgrey)]
 
-O projeto foi construído com foco em:
+Uma **API de recomendação** desenvolvida com FastAPI que sugere produtos com base nos interesses e histórico de compras do usuário.
 
-boas práticas
+👉 Projeto focado em **backend, APIs REST e boas práticas de arquitetura**
 
-validação de dados
+---
 
-persistência em banco
+## 🌐 🔥 Live API (em breve)
 
-testes automatizados
+> 🚀 Em deploy no Render
 
-🚀 Tecnologias utilizadas
+Após deploy:
 
-Python 3.11
+```
+https://python-recomendation-api.onrender.com/docs
+```
 
-FastAPI
+---
 
-Pydantic
+## 📌 Funcionalidades
 
-SQLAlchemy
+* 🔎 Sistema de recomendação baseado em interesses
+* 👤 Cadastro de usuário no banco de dados
+* 📊 Persistência com SQLite + SQLAlchemy
+* ⚡ API REST com FastAPI
+* 📄 Documentação automática (Swagger)
+* 🧠 Lógica de recomendação customizada
+* 🩺 Endpoint de health check
 
-SQLite
+---
 
-Pytest
+## 🧠 Como funciona a recomendação
 
-Uvicorn
+A API analisa:
 
-🧠 Lógica de recomendação
+* interesses do usuário
+* histórico de compras
 
-Caso o usuário possua histórico de compras, as recomendações são baseadas nesse histórico
+E retorna sugestões como:
 
-Caso contrário, são usadas as preferências/interesses
+| Entrada    | Saída                     |
+| ---------- | ------------------------- |
+| tecnologia | teclado mecânico, monitor |
+| games      | cadeira gamer, headset    |
+| notebook   | mouse, suporte notebook   |
 
-O sistema evita recomendações duplicadas
+---
 
-As regras são facilmente extensíveis
+## 🛠️ Tecnologias utilizadas
 
-📂 Estrutura do projeto
+* Python
+* FastAPI
+* SQLAlchemy
+* SQLite
+* Pydantic
+
+---
+
+## 📂 Estrutura do projeto
+
+```
 app/
- ├── main.py        # Inicialização da API
- ├── routes.py      # Rotas HTTP
- ├── service.py     # Regras de negócio
- ├── schemas/       # Validação com Pydantic
- ├── database/      # SQLite + SQLAlchemy
-tests/
- └── test_recomendacoes.py
+│
+├── main.py
+├── routes.py
+├── service.py
+│
+├── schemas/
+│   └── usuario.py
+│
+├── database/
+│   ├── database.py
+│   ├── models.py
+│   └── deps.py
+```
 
-▶️ Como executar o projeto
-python -m venv .venv
-source .venv/bin/activate  # Windows: .\.venv\Scripts\Activate.ps1
+---
+
+## ⚙️ Como rodar o projeto
+
+### 1. Clone o repositório
+
+```
+git clone https://github.com/rnsotero/python-recomendation-api.git
+```
+
+### 2. Acesse a pasta
+
+```
+cd python-recomendation-api
+```
+
+### 3. Instale as dependências
+
+```
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+```
 
+### 4. Execute a API
 
-Acesse:
+```
+python -m uvicorn app.main:app --reload
+```
 
-http://127.0.0.1:8000/docs
+---
 
-🧪 Executar os testes
-pytest
+## 🌐 Acessar a API
 
-📈 Próximas evoluções planejadas
+Swagger:
 
-Autenticação de usuários
+```
+http://localhost:8000/docs
+```
 
-Regras de recomendação mais avançadas
+---
 
-Cache e performance
+## 🧪 Exemplo de requisição
 
-Containerização com Docker
+### POST `/api/recomendar`
+
+```json
+{
+  "nome": "Renato",
+  "interesses": ["tecnologia", "games"],
+  "historico_compras": ["notebook"]
+}
+```
+
+---
+
+## 📦 Exemplo de resposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 1,
+    "usuario": "Renato",
+    "recomendacoes": [
+      "mouse",
+      "suporte notebook"
+    ]
+  }
+}
+```
+
+---
+
+## 🩺 Health Check
+
+```
+GET /api/health
+```
+
+Resposta:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+## 🎯 Objetivo do projeto
+
+Este projeto foi desenvolvido com foco em:
+
+* construção de APIs REST
+* organização de código backend
+* integração com banco de dados
+* simulação de sistemas reais de recomendação
+
+---
+
+## 📚 Aprendizados
+
+* estruturação de APIs com FastAPI
+* uso de SQLAlchemy para persistência
+* validação de dados com Pydantic
+* separação de responsabilidades (routes, service, models)
+* criação de endpoints profissionais
+
+---
+
+## 🚀 Melhorias futuras
+
+* 🔐 Autenticação com JWT
+* 🧠 Recomendação com Machine Learning
+* 🌐 Deploy com banco externo (PostgreSQL)
+* 📊 Logs estruturados
+* 🧪 Testes automatizados
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas!
+
+---
+
+## 📄 Licença
+
+MIT
+
+---
+
+💡 Projeto com foco em evolução contínua e boas práticas de backend.

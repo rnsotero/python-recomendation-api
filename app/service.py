@@ -1,20 +1,19 @@
 def gerar_recomendacoes(usuario):
-    base = usuario.historico_compras
-    if usuario.historico_compras:
-        base = usuario.historico_compras
-    else:
-        base = usuario.interesses
- 
+
+    base = usuario.historico_compras if usuario.historico_compras else usuario.interesses
+
     recomendacoes = []
 
     for item in base:
-        item = item.lower()
+        item = item.lower().strip()
 
         if item == "tecnologia":
-            recomendacoes.extend(["teclado mecãnico", "monitor"])
-        if item == "games":
+            recomendacoes.extend(["teclado mecânico", "monitor"])
+
+        elif item == "games":
             recomendacoes.extend(["cadeira gamer", "headset"])
-        if item == "notebook":
-            recomendacoes.extend(["mouse","suporte notebook"])    
+
+        elif item == "notebook":
+            recomendacoes.extend(["mouse", "suporte notebook"])
 
     return list(set(recomendacoes))
