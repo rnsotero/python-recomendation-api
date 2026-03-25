@@ -18,7 +18,8 @@ router = APIRouter(
 # 🔥 ROTA ROOT (boa prática)
 @router.get("/")
 def root():
-    return {"message": "Recommendation API running 🚀"}
+    return {"message": "API de recomendação online 🚀",
+  "docs": "/docs"}
 
 # 🔥 HEALTH CHECK (nível produção)
 @router.get("/health")
